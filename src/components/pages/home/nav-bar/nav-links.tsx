@@ -28,14 +28,14 @@ export const NavLinks = () => {
   const linkIsActive = (path: string) => currentPathname === path;
 
   return (
-    <nav className="flex flex-col gap-4 text-muted-foreground md:flex-row">
+    <nav className="flex flex-col gap-3 text-muted-foreground md:flex-row">
       {NAV_LINKS.map((link) => (
         <Link
           key={link.name}
           href={link.path}
           className={cn(
-            "rounded-lg py-3 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-accent md:px-2",
-            linkIsActive(link.path) && "text-primary",
+            "rounded-lg p-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-accent",
+            linkIsActive(link.path) && "font-medium text-primary",
           )}
         >
           {link.name}

@@ -3,6 +3,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 import { LogOut } from "lucide-react";
+import Link from "next/link";
 
 type AvatarUserProps = {
   user?: {
@@ -36,6 +38,13 @@ export const UserDropdown = ({ user }: AvatarUserProps) => {
             </p>
           </div>
         </DropdownMenuLabel>
+
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link href="/sell">Venda seu produto</Link>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
 

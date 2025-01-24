@@ -17,7 +17,7 @@ export const Navbar = async () => {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-7 md:px-8">
+    <div className="flex items-center justify-between py-7">
       <Logo />
       <div className="hidden md:block">
         <NavLinks />

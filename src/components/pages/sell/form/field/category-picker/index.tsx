@@ -5,27 +5,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../../ui/form";
+} from "../../../../../ui/form";
 import { useFormContext } from "react-hook-form";
 
-import { Code, Globe, LucideIcon, Regex } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CategoryTypes } from "@prisma/client";
+import { CATEGORIES } from "./constants";
 
-export type CategoryTypes = "template" | "icons" | "uikits";
-
-type CategoryCardData = {
-  type: CategoryTypes;
-  title: string;
-  icon: LucideIcon;
-};
-
-const CATEGORIES: CategoryCardData[] = [
-  { title: "Templates", type: "template", icon: Code },
-  { title: "Ícones", type: "icons", icon: Regex },
-  { title: "UI Kits", type: "uikits", icon: Globe },
-];
-
-export const CategoryPicker = () => {
+export const CategoryPickerField = () => {
   const {
     control,
     formState: { isSubmitting },

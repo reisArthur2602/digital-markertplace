@@ -3,10 +3,11 @@
 import { Form } from "@/components/ui/form";
 import { InputField } from "@/components/ui/input/field";
 import { useForm } from "react-hook-form";
-import { CategoryPicker, CategoryTypes } from "./category-picker";
+import { CategoryPickerField } from "./field/category-picker";
 import { TextareaField } from "@/components/ui/textarea/field";
-import { DropzoneFileField } from "./dropzone-files";
+import { DropzoneFileField } from "./field/dropzone-files";
 import { Button } from "@/components/ui/button";
+import { CategoryTypes } from "@prisma/client";
 
 type FormData = {
   name: string;
@@ -24,7 +25,7 @@ export const SellForm = () => {
       name: "",
       subtitle: "",
       price: 1,
-      category: "template",
+      category: "TEMPLATE",
       description: "",
       image_url: "",
       product_url: "",
@@ -53,7 +54,7 @@ export const SellForm = () => {
           placeholder="Subtítulo do produto"
           required
         />
-        <CategoryPicker />
+        <CategoryPickerField />
         <TextareaField
           name="description"
           label="Descrição"

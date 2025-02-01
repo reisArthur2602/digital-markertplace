@@ -3,12 +3,12 @@ import { SellForm } from "./form";
 
 export const SellPage = () => {
   return (
-    <section>
+    <main>
       <SectionHeader
         title="Vender"
         subtitle="Venda seus produtos digitais aqui."
       />
       <SellForm />
-    </section>
+    </main>
   );
 };

@@ -15,3 +15,21 @@ model User {
   lastName     String
   profileImage String 
 }
+model Product {
+  id        String   @id @default(cuid())
+  name     String   
+  subtitle  String
+  price   Int
+  category  CategoryTypes
+  description     String
+  product_url String 
+  image_url String 
+}
+
+
+enum CategoryTypes {
+  TEMPLATE
+  ICONS
+  UIKITS
+}
+

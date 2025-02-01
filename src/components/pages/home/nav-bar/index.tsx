@@ -13,7 +13,7 @@ export const Navbar = async () => {
   const data = {
     email: user?.email as string,
     name: user?.given_name as string,
-    image: user?.picture as string,
+    image: user.picture || `https://avatar.vercel.sh/${user?.given_name}`,
   };
 
   return (

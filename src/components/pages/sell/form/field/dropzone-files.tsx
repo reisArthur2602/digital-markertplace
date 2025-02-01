@@ -6,7 +6,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../../ui/form";
+} from "../../../../ui/form";
 import { useFormContext } from "react-hook-form";
 import { UploadDropzone } from "@/lib/uploadthing";
 

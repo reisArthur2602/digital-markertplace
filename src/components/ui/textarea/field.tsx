@@ -8,20 +8,20 @@ import {
   FormLabel,
   FormMessage,
 } from "../form";
-import { Input } from "./primitive";
+import { Textarea } from "./primitive";
 
-type InputFieldProps = ComponentProps<"input"> & {
+type TextareaFieldProps = ComponentProps<"textarea"> & {
   name: string;
   label?: string;
   required?: boolean;
 };
 
-export const InputField = ({
+export const TextareaField = ({
   name,
   label,
   required,
   ...rest
-}: InputFieldProps) => {
+}: TextareaFieldProps) => {
   const {
     control,
     formState: { isSubmitting },
@@ -36,7 +36,7 @@ export const InputField = ({
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input {...rest} {...field} disabled={isSubmitting} />
+            <Textarea {...rest} {...field} disabled={isSubmitting} />
           </FormControl>
           <FormMessage />
         </FormItem>

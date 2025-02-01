@@ -1,5 +1,7 @@
+import { SellPage } from "@/components/pages/sell";
+
 const Sell = () => {
-  return <div>Sell</div>;
+  return <SellPage />;
 };
 
 export default Sell;

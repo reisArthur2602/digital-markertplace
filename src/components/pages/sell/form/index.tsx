@@ -1,5 +1,5 @@
 "use client";
-
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import { InputField } from "@/components/ui/input/field";
 import { useForm } from "react-hook-form";
@@ -7,52 +7,44 @@ import { CategoryPickerField } from "./field/category-picker";
 import { TextareaField } from "@/components/ui/textarea/field";
 import { DropzoneFileField } from "./field/dropzone-files";
 import { Button } from "@/components/ui/button";
-import { CategoryTypes } from "@prisma/client";
 
-type FormData = {
-  name: string;
-  subtitle: string;
-  category: CategoryTypes;
-  description: string;
-  price: number;
-  image_url: string;
-  product_url: string;
-};
+import { CreateProductSchema, CreateProductSchemaType } from "./schemas";
+import { createProduct } from "@/db/product/actions";
+import { toast } from "sonner";
 
 export const SellForm = () => {
-  const form = useForm<FormData>({
+  const form = useForm<CreateProductSchemaType>({
     defaultValues: {
       name: "",
       subtitle: "",
-      price: 1,
+      price: 0,
       category: "TEMPLATE",
       description: "",
-      image_url: "",
+      image_url: [],
       product_url: "",
     },
+    resolver: zodResolver(CreateProductSchema),
   });
 
-  const onSubmit = form.handleSubmit((data) => {
-    console.log(data);
+  const onSubmit = form.handleSubmit(async (data) => {
+    await createProduct(data)
+      .then(() => toast.success("O produto foi criado com sucesso"))
+      .catch(() => {
+        toast.error("Ops... algo deu errado!");
+      });
   });
 
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={onSubmit}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <InputField
-            name="name"
-            label="Nome"
-            placeholder="Nome do produto"
-            required
-          />
-          <InputField name="price" label="Preço" type="number" required />
+          <InputField name="name" label="Nome" placeholder="Nome do produto" />
+          <InputField name="price" label="Preço" type="number" />
         </div>
         <InputField
           name="subtitle"
           label="Subtítulo"
           placeholder="Subtítulo do produto"
-          required
         />
         <CategoryPickerField />
         <TextareaField
@@ -60,7 +52,6 @@ export const SellForm = () => {
           label="Descrição"
           placeholder="Descreva o seu produto"
           className="min-h-[120px] resize-none"
-          required
         />
         <DropzoneFileField
           label="Imagem"

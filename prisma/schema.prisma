@@ -22,8 +22,9 @@ model Product {
   price   Int
   category  CategoryTypes
   description     String
+  image_url String[]
   product_url String 
-  image_url String 
+  created_at DateTime @default(now())
 }
 
 

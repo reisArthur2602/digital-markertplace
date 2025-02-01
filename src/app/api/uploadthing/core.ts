@@ -24,10 +24,18 @@ export const ourFileRouter = {
     .onUploadComplete(async ({ metadata }) => {
       return { uploadedBy: metadata.userId };
     }),
+
   productFileUpload: f({
-    "application/zip": { maxFileCount: 1 },
+    blob: { maxFileCount: 1, maxFileSize: "1GB" },
   })
-    .middleware(authMiddleware)
+    .middleware(async ({ files }) => {
+      const allowedTypes = ["application/zip", "application/x-zip-compressed"];
+
+      if (!allowedTypes.includes(files[0].type))
+        throw new UploadThingError("Somente o formato ZIP é permitido");
+
+      return await authMiddleware();
+    })
     .onUploadComplete(async ({ metadata }) => {
       return { uploadedBy: metadata.userId };
     }),

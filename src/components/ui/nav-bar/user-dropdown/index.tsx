@@ -12,6 +12,7 @@ import {
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
+import { USER_DROPDOWN_LINKS } from "./constants";
 
 type AvatarUserProps = {
   user?: {
@@ -41,9 +42,18 @@ export const UserDropdown = ({ user }: AvatarUserProps) => {
 
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href="/sell">Venda seu produto</Link>
-          </DropdownMenuItem>
+          {USER_DROPDOWN_LINKS.map((item) => (
+            <DropdownMenuItem
+              asChild
+              className="cursor-pointer"
+              key={item.path}
+            >
+              <Link href={item.path} className="capitalize">
+                <item.icon />
+                {item.name}
+              </Link>
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />

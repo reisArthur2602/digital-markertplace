@@ -3,25 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_LINKS = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Templates",
-    path: "#",
-  },
-  {
-    name: "UI-Kits",
-    path: "#",
-  },
-  {
-    name: "Icones",
-    path: "#",
-  },
-];
+import { NAV_LINKS } from "./constants";
 
 export const NavLinks = () => {
   const currentPathname = usePathname();

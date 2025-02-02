@@ -13,8 +13,8 @@ type LinksUserDropdown = {
 };
 
 export const USER_DROPDOWN_LINKS: LinksUserDropdown[] = [
-  { name: "Vender produto", icon: ShoppingBag, path: "/products/sell" },
-  { name: "Meus produtos", icon: Globe, path: "/products" },
-  { name: "Configurações", icon: Settings2, path: "/settings" },
-  { name: "Pagamentos", icon: DollarSignIcon, path: "/payment" },
+  { name: "Meus produtos", icon: Globe, path: "/auth/products" },
+  { name: "Vender produto", icon: ShoppingBag, path: "/auth/products/sell" },
+  { name: "Pagamentos", icon: DollarSignIcon, path: "/auth/payment" },
+  { name: "Configurações", icon: Settings2, path: "/auth/settings" },
 ];

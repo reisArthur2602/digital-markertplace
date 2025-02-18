@@ -4,9 +4,13 @@ import { NavItems } from "./NavItems";
 import { Wrapper } from "./Wrapper";
 import { Button } from "./ui/button";
 import { AccountDropdown } from "./AccountDropdown";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export const NavBar = () => {
-  const user = true;
+export const NavBar = async () => {
+  const { getUser } = getKindeServerSession();
+
+  const user = await getUser();
 
   return (
     <header>
@@ -19,11 +23,17 @@ export const NavBar = () => {
         <div>
           {user ? (
             <div className="flex gap-6">
-              <AccountDropdown />
+              <AccountDropdown
+                email={user.email!}
+                name={user.given_name!}
+                picture={user.picture}
+              />
               <Cart />
             </div>
           ) : (
-            <Button>Comece agora mesmo</Button>
+            <Button>
+              <LoginLink>Comece agora mesmo</LoginLink>
+            </Button>
           )}
         </div>
       </Wrapper>

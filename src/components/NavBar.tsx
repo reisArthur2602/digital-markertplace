@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { AccountDropdown } from "./AccountDropdown";
 
 export const NavBar = () => {
-  const user = null;
+  const user = true;
 
   return (
     <header>

@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={cn("h-full font-sans antialiased", inter.className)}>
+      <body className={cn("h-full antialiased", inter.className)}>
         {children}
       </body>
     </html>

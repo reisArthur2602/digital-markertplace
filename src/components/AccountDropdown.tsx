@@ -28,7 +28,7 @@ export const AccountDropdown = ({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
-          <AvatarImage src={picture || "https://avatar.vercel.sh/username"} />
+          <AvatarImage src={picture || `https://avatar.vercel.sh/${name}`} />
         </Avatar>
       </DropdownMenuTrigger>
 
@@ -41,7 +41,7 @@ export const AccountDropdown = ({
         <DropdownMenuSeparator />
 
         <DropdownMenuItem asChild className="cursor-pointer">
-          <Link href="/onbording">Acessar Painel</Link>
+          <Link href="/onboarding">Acessar Painel</Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />

@@ -1,19 +1,22 @@
 import { HeaderOnboarding } from "@/components/HeaderOnboarding";
 
-const Onboarding = () => {
+const Sell = () => {
   const breadcrumb_links = [
     {
       label: "Dashboard",
       path: "/onboarding",
+    },
+    {
+      label: "Venda seu produto",
+      path: "/onboarding/sell",
     },
   ];
 
   return (
     <div>
       <HeaderOnboarding breadcrumb_links={breadcrumb_links} />
-      Main
+      Sell
     </div>
   );
 };
-
-export default Onboarding;
+export default Sell;

@@ -1,14 +1,19 @@
 import { Logo } from "@/components/Logo";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { Globe, Settings2, ShoppingBag } from "lucide-react";
+import { Globe, Home, Settings2, ShoppingBag } from "lucide-react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { PropsWithChildren } from "react";
 
 const NAV_LINKS_SECTIONS = [
   {
-    title: "Menu",
+    title: "Aplicação",
     links: [
+      {
+        label: "Início",
+        path: "/onboarding",
+        icon: Home,
+      },
       {
         label: "Vender Produtos",
         path: "/onboarding/sell",
@@ -36,7 +41,7 @@ const NAV_LINKS_SECTIONS = [
 const OnboardingLayout = async ({ children }: PropsWithChildren) => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  if (!user) return notFound();
+  if (!user) redirect("/");
 
   return (
     <div className="grid h-full grid-cols-[380px_1fr] overflow-hidden">
@@ -47,7 +52,7 @@ const OnboardingLayout = async ({ children }: PropsWithChildren) => {
 
         <nav className="space-y-6 px-8 py-6">
           {NAV_LINKS_SECTIONS.map((s) => (
-            <div className="space-y-2" key={s.title}>
+            <div className="space-y-1.5" key={s.title}>
               <span className="text-xs font-medium capitalize text-zinc-400">
                 {s.title}
               </span>
